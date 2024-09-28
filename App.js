@@ -102,7 +102,7 @@ function MyTabs() {
             </Text>
           ),
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="chat" color={color} size={30} />
+            <MaterialIcons name="chat" color={color} size={30} />
           ),
         }}
       />

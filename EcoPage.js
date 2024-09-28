@@ -32,19 +32,4 @@ const styles = StyleSheet.create({
   text: {
     alignItems: "center",
   },
-  navigationBar: {
-    position: "absolute",
-    alignSelf: "center",
-    alignItems: "center",
-    bottom: 0,
-    backgroundColor: "white",
-    borderRadius: 30,
-    width: "120%",
-    height: "12%",
-    flexDirection: "row",
-    paddingHorizontal: 50,
-    justifyContent: "space-around",
-  },
-  pageIcons: {},
-  marginHorizontal: 20,
 });

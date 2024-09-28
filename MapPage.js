@@ -1,13 +1,49 @@
-// general imports
+import React from "react";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, Pressable } from "react-native";
-import { MaterialIcons, Ionicons } from "@expo/vector-icons";
+import { StyleSheet, View } from "react-native";
+import MapView, { Marker, PROVIDER_GOOGLE } from "react-native-maps";
+import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
+import { GOOGLE_API_KEY } from "@env";
 
 export function MapPage({ navigation, route }) {
   return (
     <View style={styles.container}>
-      {/* Navigation Bar */}
-      <Text style={styles.text}>Map</Text>
+      <GooglePlacesAutocomplete
+        placeholder="Search"
+        onPress={(data, details = null) => {
+          console.log(data, details);
+        }}
+        query={{
+          key: GOOGLE_API_KEY,
+          language: "en",
+        }}
+        styles={{
+          container: {
+            flex: 0,
+            position: "absolute",
+            width: "100%",
+            zIndex: 1,
+          },
+          listView: { backgroundColor: "white" },
+        }}
+      />
+      <MapView
+        style={styles.map}
+        initialRegion={{
+          latitude: 37.78825,
+          longitude: -122.4324,
+          latitudeDelta: 0.0922,
+          longitudeDelta: 0.0421,
+        }}
+        // provider={MapView.PROVIDER_GOOGLE}
+        provider={PROVIDER_GOOGLE}
+      >
+        <Marker
+          coordinate={{ latitude: 37.78825, longitude: -122.4324 }}
+          title={"Marker Title"}
+          description={"Marker Description"}
+        />
+      </MapView>
       <StatusBar style="auto" />
     </View>
   );
@@ -16,25 +52,10 @@ export function MapPage({ navigation, route }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    marginTop: 50,
   },
-  text: {
-    alignItems: "center",
+  map: {
+    ...StyleSheet.absoluteFillObject,
+    marginTop: 50,
   },
-  navigationBar: {
-    position: "absolute",
-    alignSelf: "center",
-    alignItems: "center",
-    bottom: 0,
-    backgroundColor: "white",
-    borderRadius: 30,
-    width: "120%",
-    height: "12%",
-    flexDirection: "row",
-    paddingHorizontal: 50,
-    justifyContent: "space-around",
-  },
-  pageIcons: {},
-  marginHorizontal: 20,
 });
