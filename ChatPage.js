@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
+import { Feather } from "@expo/vector-icons";
 
 // search bar imports
 import { SearchBar } from "react-native-elements";
@@ -28,9 +29,81 @@ export function ChatPage({ navigation, route }) {
         />
         <View style={styles.card}>
           <View style={styles.imagePlaceholder}>
-            <View style={styles.neighbourhoodNameText}>
-              <Text>N</Text>
+            <View style={styles.neighbourhoodName}>
+              <Text style={{ color: "white", fontWeight: "bold" }}>
+                Neighbourhood Name
+              </Text>
             </View>
+          </View>
+          <Text style={styles.threadName}>Thread name</Text>
+          <View style={styles.threadLocation}>
+            <Feather
+              name="map-pin"
+              color="gray"
+              size={20}
+              style={{ marginRight: 5 }}
+            />
+            <Text style={{ color: "gray" }}>~street/intersection</Text>
+          </View>
+        </View>
+
+        <View style={styles.card}>
+          <View style={styles.imagePlaceholder}>
+            <View style={styles.neighbourhoodName}>
+              <Text style={{ color: "white", fontWeight: "bold" }}>
+                Neighbourhood Name
+              </Text>
+            </View>
+          </View>
+          <Text style={styles.threadName}>Thread name</Text>
+          <View style={styles.threadLocation}>
+            <Feather
+              name="map-pin"
+              color="gray"
+              size={20}
+              style={{ marginRight: 5 }}
+            />
+            <Text style={{ color: "gray" }}>~street/intersection</Text>
+          </View>
+        </View>
+
+        <View style={styles.card}>
+          <View style={styles.imagePlaceholder}>
+            <View style={styles.neighbourhoodName}>
+              <Text style={{ color: "white", fontWeight: "bold" }}>
+                Neighbourhood Name
+              </Text>
+            </View>
+          </View>
+          <Text style={styles.threadName}>Thread name</Text>
+          <View style={styles.threadLocation}>
+            <Feather
+              name="map-pin"
+              color="gray"
+              size={20}
+              style={{ marginRight: 5 }}
+            />
+            <Text style={{ color: "gray" }}>~street/intersection</Text>
+          </View>
+        </View>
+
+        <View style={styles.card}>
+          <View style={styles.imagePlaceholder}>
+            <View style={styles.neighbourhoodName}>
+              <Text style={{ color: "white", fontWeight: "bold" }}>
+                Neighbourhood Name
+              </Text>
+            </View>
+          </View>
+          <Text style={styles.threadName}>Thread name</Text>
+          <View style={styles.threadLocation}>
+            <Feather
+              name="map-pin"
+              color="gray"
+              size={20}
+              style={{ marginRight: 5 }}
+            />
+            <Text style={{ color: "gray" }}>~street/intersection</Text>
           </View>
         </View>
       </View>
@@ -71,7 +144,7 @@ const styles = StyleSheet.create({
   },
   imagePlaceholder: {
     width: "94%",
-    height: "75%",
+    height: "70%",
     backgroundColor: "lightgray",
     borderRadius: 20,
     alignSelf: "center",
@@ -79,13 +152,26 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "darkgray",
   },
-  neighbourhoodNameText: {
-    borderRadius: 20,
-    width: "40%",
-    backgroundColor: "darkgray",
+  neighbourhoodName: {
+    borderRadius: 10,
+    width: "50%",
+    backgroundColor: "gray",
     justifyContent: "center",
-    marginTop: 130,
-    marginLeft: 13,
+    marginTop: 120,
+    marginLeft: 8,
     padding: 5,
+    color: "white",
+  },
+  threadName: {
+    marginLeft: 10,
+    marginTop: 5,
+    fontWeight: "bold",
+    marginLeft: 15,
+  },
+  threadLocation: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginLeft: 10,
+    marginTop: 5,
   },
 });

@@ -13,10 +13,9 @@
     },
     "ios": {
       "config": {
-        "googleMapsApiKey": "AIzaSyCBDBoBlxRkdcblsoy_Ly0WyGHclR_kPbw"
       },
       "supportsTablet": true,
-      "bundleIdentifier": "com.techibears.ios"
+      "bundleIdentifier": "com.techiebears.ios"
     },
     "android": {
       "adaptiveIcon": {

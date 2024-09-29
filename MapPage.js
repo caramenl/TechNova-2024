@@ -35,8 +35,8 @@ export function MapPage({ navigation, route }) {
           latitudeDelta: 0.0922,
           longitudeDelta: 0.0421,
         }}
-        // provider={MapView.PROVIDER_GOOGLE}
-        provider={PROVIDER_GOOGLE}
+        provider={MapView.PROVIDER_GOOGLE}
+        // provider={PROVIDER_GOOGLE}
       >
         <Marker
           coordinate={{ latitude: 37.78825, longitude: -122.4324 }}
