@@ -2,19 +2,32 @@ import React, { useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, ImageBackground } from "react-native";
 import { Feather } from "@expo/vector-icons";
-
-// search bar imports
 import { SearchBar } from "react-native-elements";
-import { MaterialIcons, Ionicons } from "@expo/vector-icons";
 
 export function ChatPage({ navigation, route }) {
-  // search bar stuff
   const SwitchComponent = () => {
     const [search, setSearch] = useState(""); // State for search input
 
     const updateSearch = (search) => {
       setSearch(search);
     };
+
+    // Array of image sources for each card
+    const images = [
+      require("./assets/nstock1.jpg"),
+      require("./assets/nstock2.jpg"),
+      require("./assets/nstock3.jpg"),
+    ];
+
+    // Array of neighborhood names
+    const neighborhoods = ["Summerdale", "Urban Heights", "Midtown"];
+
+    // Array of thread names
+    const threadNames = [
+      "Park Trails",
+      "Recent Incidents",
+      "Local Farmers Market",
+    ];
 
     return (
       <View style={styles.container}>
@@ -27,88 +40,34 @@ export function ChatPage({ navigation, route }) {
           containerStyle={styles.searchBar}
           inputContainerStyle={styles.searchBarInput}
         />
-        <View style={styles.card}>
-          <View style={styles.imagePlaceholder}>
-            <View style={styles.neighbourhoodName}>
-              <Text style={{ color: "white", fontWeight: "bold" }}>
-                Neighbourhood Name
-              </Text>
-            </View>
-          </View>
-          <Text style={styles.threadName}>Thread name</Text>
-          <View style={styles.threadLocation}>
-            <Feather
-              name="map-pin"
-              color="gray"
-              size={20}
-              style={{ marginRight: 5 }}
-            />
-            <Text style={{ color: "gray" }}>~street/intersection</Text>
-          </View>
-        </View>
 
-        <View style={styles.card}>
-          <ImageBackground
-            source={require("./assets/nstock1.jpg")}
-            style={styles.imagePlaceholder}
-          >
-            <View style={styles.neighbourhoodName}>
-              <Text style={{ color: "white", fontWeight: "bold" }}>
-                Neighbourhood Name
-              </Text>
-            </View>
-          </ImageBackground>
-          <Text style={styles.threadName}>Thread name</Text>
-          <View style={styles.threadLocation}>
-            <Feather
-              name="map-pin"
-              color="gray"
-              size={20}
-              style={{ marginRight: 5 }}
-            />
-            <Text style={{ color: "gray" }}>~street/intersection</Text>
-          </View>
-        </View>
-
-        <View style={styles.card}>
-          <View style={styles.imagePlaceholder}>
-            <View style={styles.neighbourhoodName}>
-              <Text style={{ color: "white", fontWeight: "bold" }}>
-                Neighbourhood Name
-              </Text>
+        {/* Card Component */}
+        {images.map((image, index) => (
+          <View style={styles.card} key={index}>
+            <ImageBackground
+              source={image}
+              style={styles.imagePlaceholder}
+              imageStyle={styles.imageStyle}
+              resizeMode="cover" // Ensures the image covers the area
+            >
+              <View style={styles.neighbourhoodName}>
+                <Text style={{ color: "white", fontWeight: "bold" }}>
+                  {neighborhoods[index]}
+                </Text>
+              </View>
+            </ImageBackground>
+            <Text style={styles.threadName}>{threadNames[index]}</Text>
+            <View style={styles.threadLocation}>
+              <Feather
+                name="map-pin"
+                color="gray"
+                size={20}
+                style={{ marginRight: 5 }}
+              />
+              <Text style={{ color: "gray" }}>~street/intersection</Text>
             </View>
           </View>
-          <Text style={styles.threadName}>Thread name</Text>
-          <View style={styles.threadLocation}>
-            <Feather
-              name="map-pin"
-              color="gray"
-              size={20}
-              style={{ marginRight: 5 }}
-            />
-            <Text style={{ color: "gray" }}>~street/intersection</Text>
-          </View>
-        </View>
-
-        <View style={styles.card}>
-          <View style={styles.imagePlaceholder}>
-            <View style={styles.neighbourhoodName}>
-              <Text style={{ color: "white", fontWeight: "bold" }}>
-                Neighbourhood Name
-              </Text>
-            </View>
-          </View>
-          <Text style={styles.threadName}>Thread name</Text>
-          <View style={styles.threadLocation}>
-            <Feather
-              name="map-pin"
-              color="gray"
-              size={20}
-              style={{ marginRight: 5 }}
-            />
-            <Text style={{ color: "gray" }}>~street/intersection</Text>
-          </View>
-        </View>
+        ))}
       </View>
     );
   };
@@ -139,42 +98,40 @@ const styles = StyleSheet.create({
   },
   card: {
     width: "90%",
-    height: "30%",
     borderRadius: 20,
     marginTop: 10,
     borderWidth: 1,
     borderColor: "darkgray",
+    overflow: "hidden", // Ensures child components do not overflow the card
   },
   imagePlaceholder: {
-    width: "94%",
-    height: "70%",
+    width: "100%",
+    height: 150, // Set a fixed height for better control
     backgroundColor: "lightgray",
+  },
+  imageStyle: {
     borderRadius: 20,
-    alignSelf: "center",
-    marginTop: 10,
-    borderWidth: 1,
-    borderColor: "darkgray",
   },
   neighbourhoodName: {
     borderRadius: 10,
-    width: "50%",
+    width: "40%",
     backgroundColor: "gray",
     justifyContent: "center",
-    marginTop: 120,
-    marginLeft: 8,
+    position: "absolute",
+    bottom: 10, // Position it at the bottom of the image
+    left: 10,
     padding: 5,
-    color: "white",
   },
   threadName: {
-    marginLeft: 10,
+    marginLeft: 15,
     marginTop: 5,
     fontWeight: "bold",
-    marginLeft: 15,
   },
   threadLocation: {
     flexDirection: "row",
     alignItems: "center",
-    marginLeft: 10,
+    marginLeft: 15,
     marginTop: 5,
+    marginBottom: 10,
   },
 });

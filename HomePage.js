@@ -18,19 +18,6 @@ export function HomePage({ route }) {
     });
   }, []);
 
-  // const currentHour = new Date().getHours();
-
-  //   // Determine the current hour and set background accordingly
-  //   const currentHour = new Date().getHours();
-  //   if (currentHour >= 5 && currentHour < 12) {
-  //     setBackgroundImage(require("./assets/bg-images/morning-bg.png"));
-  //   } else if (currentHour >= 12 && currentHour < 19) {
-  //     setBackgroundImage(require("./assets/bg-images/afternoon-bg.png"));
-  //   } else if (currentHour >= 19 || currentHour < 5) {
-  //     setBackgroundImage(require("./assets/bg-images/evening-bg.png"));
-  //   }
-  // }, [])
-
   return (
     <ImageBackground
       source={require("./assets/sunset2.png")} // Background Image
