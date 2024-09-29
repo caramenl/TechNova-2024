@@ -24,9 +24,7 @@ export function SettingsPage({ navigation, route }) {
   const scaleHeadphones = useRef(new Animated.Value(1)).current;
 
   // State to handle bear image change
-  const [bearImage, setBearImage] = useState(
-    require("./assets/settings-images/bear.png")
-  );
+  const [bearImage, setBearImage] = useState(require("./assets/bear.png"));
 
   const handleContinue = () => {
     navigation.navigate("TabScreen");
@@ -76,14 +74,10 @@ export function SettingsPage({ navigation, route }) {
               onPressIn={() => startZoomOut(scaleBow)}
               onPressOut={() => resetZoom(scaleBow)}
               style={styles.customButton}
-              onPress={() =>
-                handleImageChange(
-                  require("./assets/settings-images/bearbow.png")
-                )
-              }
+              onPress={() => handleImageChange(require("./assets/bearbow.png"))}
             >
               <Image
-                source={require("./assets/settings-images/bow.png")}
+                source={require("./assets/bow.png")}
                 style={styles.bearImageSmall}
               />
             </Pressable>
@@ -95,14 +89,10 @@ export function SettingsPage({ navigation, route }) {
               onPressIn={() => startZoomOut(scaleHat)}
               onPressOut={() => resetZoom(scaleHat)}
               style={styles.customButton}
-              onPress={() =>
-                handleImageChange(
-                  require("./assets/settings-images/bearhat.png")
-                )
-              }
+              onPress={() => handleImageChange(require("./assets/bearhat.png"))}
             >
               <Image
-                source={require("./assets/settings-images/hat.png")}
+                source={require("./assets/hat.png")}
                 style={styles.bearImageSmall}
               />
             </Pressable>
@@ -115,13 +105,11 @@ export function SettingsPage({ navigation, route }) {
               onPressOut={() => resetZoom(scaleHeadphones)}
               style={styles.customButton}
               onPress={() =>
-                handleImageChange(
-                  require("./assets/settings-images/bearheadphones.png")
-                )
+                handleImageChange(require("./assets/bearheadphones.png"))
               }
             >
               <Image
-                source={require("./assets/settings-images/headphones.png")}
+                source={require("./assets/headphones.png")}
                 style={styles.bearImageSmall}
               />
             </Pressable>
@@ -220,9 +208,9 @@ const styles = StyleSheet.create({
   },
   // Custom button with image styling
   customButton: {
-    width: 70,
-    height: 70,
-    borderRadius: 10,
+    width: 80,
+    height: 80,
+    borderRadius: 40,
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#FF776D",

@@ -24,7 +24,7 @@ export function SignInPage({ navigation }) {
 
   const handleContinue = () => {
     // Handle form submission or navigation here
-    navigation.navigate("TabScreen");
+    navigation.navigate("TabScreen", { userName: name });
   };
 
   const handleFocus = (inputName) => {

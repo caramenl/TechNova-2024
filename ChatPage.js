@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, ImageBackground } from "react-native";
 import { Feather } from "@expo/vector-icons";
 
 // search bar imports
@@ -48,13 +48,16 @@ export function ChatPage({ navigation, route }) {
         </View>
 
         <View style={styles.card}>
-          <View style={styles.imagePlaceholder}>
+          <ImageBackground
+            source={require("./assets/nstock1.jpg")}
+            style={styles.imagePlaceholder}
+          >
             <View style={styles.neighbourhoodName}>
               <Text style={{ color: "white", fontWeight: "bold" }}>
                 Neighbourhood Name
               </Text>
             </View>
-          </View>
+          </ImageBackground>
           <Text style={styles.threadName}>Thread name</Text>
           <View style={styles.threadLocation}>
             <Feather

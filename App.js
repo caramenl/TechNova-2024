@@ -23,19 +23,26 @@ import {
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
-// Settings colour of times of day
-// const currentHour = new Date().getHours();
-currentHour = 12;
+// settings colour of times of day
+const currentHour = new Date().getHours();
+console.log(currentHour);
 
-function MyTabs() {
+function MyTabs({ route }) {
+  // updates nav bar colours according to time of day
   let activeTintColor;
   if (currentHour >= 5 && currentHour < 12) {
+    // 5 AM - 11:59 PM (Morning)
     activeTintColor = "#FC7F92";
-  } else if (currentHour >= 12 && currentHour < 18) {
-    activeTintColor = "#8EF4E4";
-  } else if (currentHour >= 19 && currentHour < 23) {
+  } else if (currentHour >= 12 && currentHour < 17) {
+    // 12 PM - 4:59 PM (Afternoon)
+    activeTintColor = "pink";
+  } else if (currentHour >= 19 && currentHour < 5) {
+    // 5 PM - 4:59 AM (Night)
     activeTintColor = "#AAB1F5";
   }
+
+  const userName = route.params?.userName || "Guest";
+
   return (
     <Tab.Navigator
       screenOptions={{
@@ -43,6 +50,7 @@ function MyTabs() {
       }}
     >
       <Tab.Screen
+        initialParams={{ userName }}
         name="HomePage"
         component={HomePage}
         options={{
@@ -68,11 +76,11 @@ function MyTabs() {
           headerShown: false,
           tabBarLabel: ({ color }) => (
             <Text style={{ color: color, fontWeight: "bold", fontSize: 12 }}>
-              Eco
+              Techie
             </Text>
           ),
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="earth" color={color} size={30} />
+            <MaterialCommunityIcons name="teddy-bear" color={color} size={35} />
           ),
         }}
       />
@@ -128,7 +136,7 @@ function MyTabs() {
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator initialRouteName="SignInPage">
         <Stack.Screen
           name="SignInPage"
           component={SignInPage}
