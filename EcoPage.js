@@ -34,7 +34,6 @@ export function EcoPage() {
         });
 
         const data = await response.json();
-
         // Check if response is valid
         if (data.response) {
           // Add bot response to the messages array
